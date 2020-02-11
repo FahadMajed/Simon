@@ -9,7 +9,11 @@ $(document).keypress(function() {
 nextSequence();
 });
 
-$(".btn").click(function(){
+$("#start").click(function() {
+nextSequence();
+});
+
+$(".x").click(function(){
 
 
   var userChosenColour = $(this).attr("id");
