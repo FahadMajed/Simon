@@ -10,6 +10,19 @@ body {
   color: #FEF2BF;
 }
 
+#Difficulty {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2.7rem;
+  margin:  5%;
+  color: #FEF2BF;
+}
+#prevbest {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2.3rem;
+  margin:  5%;
+  color: #FEF2BF;
+}
+
 .container {
   display: block;
   width: 50%;
@@ -17,6 +30,20 @@ body {
 
 }
 
+.dbtn {
+  margin: 25px;
+  display: inline-block;
+  height: 100px;
+  width: 200px;
+  border: 10px solid black;
+  background-color: gray;
+}
+
+.diff {
+  color: #FEF2BF;
+  position: relative;
+  top: 30px;
+}
 .btn {
   margin: 25px;
   display: inline-block;

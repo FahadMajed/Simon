@@ -1,109 +1,274 @@
-var buttonColor = ["red","blue","green","yellow"];
+var buttonColor = ["red", "blue", "green", "yellow"];
 var gamePattern = [];
 var userClickedPattern = [];
 var i = 0;
+var glitch = 0;
+var bestScore = [];
+var scores = -1;
+$("#prevbest").hide();
 
 
-
-$(document).keypress(function() {
-nextSequence();
-});
 
 $("#start").click(function() {
-nextSequence();
+scores++;
+    if (glitch===1) {
+      $("#A").hide();
+      $("#B").hide();
+      $("#C").hide();
+      $("#start").hide();
+      $("#Difficulty").hide();
+      nextSequenceLevelA();
+}
+
+
+    if (glitch===2)  {
+      $("#A").hide();
+      $("#B").hide();
+      $("#C").hide();
+      $("#start").hide();
+      $("#Difficulty").hide();
+      nextSequenceLevelB();
+}
+
+    if (glitch===3) {
+      $("#A").hide();
+      $("#B").hide();
+      $("#C").hide();
+      $("#start").hide();
+      $("#Difficulty").hide();
+      nextSequenceLevelC();
+    }
+
+
+})
+$("#A").click(function() {
+  glitch = 1;
 });
 
-$(".x").click(function(){
+$("#B").click(function() {
+  glitch = 2;
+});
 
+$("#C").click(function() {
+  glitch = 3;
+});
+
+
+
+// When User clicks
+$(".x").click(function() {
 
   var userChosenColour = $(this).attr("id");
+  $("." + userChosenColour).fadeTo(100, 0.3, function() {
+    $(this).fadeTo(100, 1.0);
+  });
 
-$("."+userChosenColour).fadeTo(100, 0.3, function() { $(this).fadeTo(100, 1.0); });
-
-userClickedPattern.push(userChosenColour);
+  userClickedPattern.push(userChosenColour);
 
 
-playSound(userChosenColour);
+  playSound(userChosenColour);
 
-animatePress(userChosenColour);
+  animatePress(userChosenColour);
 
-checkAnswer(userClickedPattern.length-1);
+  checkAnswer(userClickedPattern.length -1);
 });
 
 
 function animatePress(currentColor) {
-var cc = "#"+currentColor;
+  var cc = "#" + currentColor;
   $(cc).addClass("pressed");
 
-  setTimeout(function () {
-        $(cc).removeClass("pressed");
-}, 100);
+  setTimeout(function() {
+    $(cc).removeClass("pressed");
+  }, 100);
 
 }
 
 function playSound(name) {
 
-    var audio = new Audio("sounds/"+name+".mp3");
-    audio.play();
+  var audio = new Audio("sounds/" + name + ".mp3");
+  audio.play();
 
-  }
+}
 
 
-function nextSequence() {
-  var randomNumber = Math.random()*4;
+function nextSequenceLevelB() {
+  var randomNumber = Math.random() * 4;
   randomNumber = Math.floor(randomNumber);
-userClickedPattern = [];
-var randomChosenColor = buttonColor[randomNumber];
-gamePattern.push(randomChosenColor);
-var color = "."+randomChosenColor;
+  userClickedPattern = [];
+  var randomChosenColor = buttonColor[randomNumber];
+  gamePattern.push(randomChosenColor);
+  var color = "." + randomChosenColor;
 
 
-$(color).fadeTo(100, 0.3, function() { $(this).fadeTo(100, 1.0); });
+
+  $(color).fadeTo(100, 0.3, function() {
+    $(this).fadeTo(100, 1.0);
+  });
 
 
-playSound(randomChosenColor);
+  playSound(randomChosenColor);
 
-i++;
-var level = "Level "+i;
+  $(document).ready(function() {
+    setTimeout(function() {
+      var randomNumber = Math.random() * 4;
+      randomNumber = Math.floor(randomNumber);
+      userClickedPattern = [];
+      var randomChosenColor = buttonColor[randomNumber];
+      gamePattern.push(randomChosenColor);
+      var color = "." + randomChosenColor;
 
-$("#level-title").text(level);
+
+      $(color).fadeTo(100, 0.3, function() {
+        $(this).fadeTo(100, 1.0);
+      });
+
+
+      playSound(randomChosenColor);
+    }, 1000);
+  })
+
+
+
+  i++;
+  var level = "Level " + i;
+
+  $("#level-title").text(level);
+
 
 
 }
 
-//1. Create a new function called checkAnswer(), it should take one input with the name currentLevel
+function nextSequenceLevelC() {
+  var randomNumber = Math.random() * 4;
+  randomNumber = Math.floor(randomNumber);
+  userClickedPattern = [];
+  var randomChosenColor = buttonColor[randomNumber];
+  gamePattern.push(randomChosenColor);
+  var color = "." + randomChosenColor;
+
+
+
+  $(color).fadeTo(100, 0.3, function() {
+    $(this).fadeTo(100, 1.0);
+  });
+
+
+  playSound(randomChosenColor);
+
+  $(document).ready(function() {
+    setTimeout(function() {
+      var randomNumber = Math.random() * 4;
+      randomNumber = Math.floor(randomNumber);
+      userClickedPattern = [];
+      var randomChosenColor = buttonColor[randomNumber];
+      gamePattern.push(randomChosenColor);
+      var color = "." + randomChosenColor;
+
+
+      $(color).fadeTo(100, 0.3, function() {
+        $(this).fadeTo(100, 1.0);
+      });
+
+
+      playSound(randomChosenColor);
+    }, 350);
+  })
+
+
+    setTimeout(function() {
+      var randomNumber = Math.random() * 4;
+      randomNumber = Math.floor(randomNumber);
+      userClickedPattern = [];
+      var randomChosenColor = buttonColor[randomNumber];
+      gamePattern.push(randomChosenColor);
+      var color = "." + randomChosenColor;
+
+
+      $(color).fadeTo(100, 0.3, function() {
+        $(this).fadeTo(100, 1.0);
+      });
+
+
+      playSound(randomChosenColor);
+    }, 700);
+
+
+
+
+  i++;
+  var level = "Level " + i;
+
+  $("#level-title").text(level);
+
+
+
+}
+
+function nextSequenceLevelA() {
+  var randomNumber = Math.random() * 4;
+  randomNumber = Math.floor(randomNumber);
+  userClickedPattern = [];
+  var randomChosenColor = buttonColor[randomNumber];
+  gamePattern.push(randomChosenColor);
+  var color = "." + randomChosenColor;
+
+  $(color).fadeTo(100, 0.3, function() {
+    $(this).fadeTo(100, 1.0);
+  });
+
+
+  playSound(randomChosenColor);
+
+  i++;
+  var level = "Level " + i;
+
+  $("#level-title").text(level);
+}
+
 function checkAnswer(currentLevel) {
 
-    //3. Write an if statement inside checkAnswer() to check if the most recent user answer is the same as the game pattern. If so then log "success", otherwise log "wrong".
-    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
+  if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
 
+    if (userClickedPattern.length === gamePattern.length) {
 
-
-      //4. If the user got the most recent answer right in step 3, then check that they have finished their sequence with another if statement.
-      if (userClickedPattern.length === gamePattern.length){
-
-        //5. Call nextSequence() after a 1000 millisecond delay.
-        setTimeout(function () {
-          nextSequence();
-        }, 1000);
-
-      }
-
-    } else {
-$("#level-title").text("YOU LOST!");
-$("body").addClass("game-over");
-playSound("wrong");
-startOver();
-setTimeout(function () {
-  $("body").removeClass("game-over");
-  $("#level-title").text("Press any key to restart");
-}, 500);
+      setTimeout(function() {
+if (glitch===1)
+        nextSequenceLevelA();
+        if (glitch===2)
+                nextSequenceLevelB();
+                if (glitch===3)
+                        nextSequenceLevelC();
+      }, 1000);
 
     }
-  }
+}
+   else {
+    $("#level-title").text("YOU LOST!");
+    $("body").addClass("game-over");
+    playSound("wrong");
+bestScore[scores] = i;
+    startOver();
 
-  function startOver() {
-    gamePattern = [];
-    userClickedPattern = [];
-    i = 0;
+    setTimeout(function() {
+      $("body").removeClass("game-over");
+      // $("#level-title").text("Press any key to start");
+      $("#start").show();
+      $("#A").show();
+      $("#B").show();
+      $("#C").show();
+      $("#start").show();
+      $("#Difficulty").show();
+    $("#prevbest").text("Previos best: "+Math.max.apply(null,bestScore));
+    $("#prevbest").show();
+
+    }, 500);
+
   }
+}
+
+function startOver() {
+  gamePattern = [];
+  userClickedPattern = [];
+  i = 0;
+}
